@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import flatten from "lodash.flatten";
+import shuffle from "lodash.shuffle";
+import chunk from "lodash.chunk";
 
 const Piece = ({ index }) => (
   <div style={{ width: "35px", height: "35px" }}>
@@ -6,9 +9,9 @@ const Piece = ({ index }) => (
   </div>
 );
 
-// let twoDarray = new Array(x).fill(null).map(item => new Array(y).fill(null));
-
-const generate2DArray = (numRows, numCols) => {
+// fills a 2d array with an ascending counter
+// generate2DArray(2, 3) => [[1, 2, 3], [4, 5, 6]]
+export const generate2DArray = (numRows, numCols) => {
   let i = 1;
   const arr = new Array(numRows)
     .fill(null)
@@ -24,17 +27,41 @@ const generate2DArray = (numRows, numCols) => {
   return arr;
 };
 
-const generatePieces = (numRows, numCols) => {
-  const intArray = generate2DArray(numRows, numCols);
+export const shuffle2DArray = intArray => {
+  const nestedLength = intArray[0].length;
+  const flat = flatten(intArray);
+  const shuffled = shuffle(flat);
+  const rechunked = chunk(shuffled, nestedLength);
 
+  return rechunked;
+};
+
+export const generatePieces = intArray => {
   return intArray.map(arr => {
-    return arr.map(int => <Piece index={int} />);
+    return arr.map(int => <Piece index={int} key={int} />);
+  });
+};
+
+export const compareMaps = (solutionMap, pieceMap) => {
+  const rowResults = [];
+
+  solutionMap.forEach((arr, yIndex) => {
+    const result = arr.every((int, xIndex) => {
+      return int === pieceMap[yIndex][xIndex];
+    });
+
+    rowResults.push(result);
+  });
+
+  return !rowResults.some(result => {
+    return result === false;
   });
 };
 
 class Puzzle extends Component {
   render() {
-    const Pieces = generatePieces(8, 12);
+    const solutionMap = generate2DArray(4, 4);
+    const Pieces = generatePieces(shuffle2DArray(solutionMap));
 
     return Pieces;
   }
