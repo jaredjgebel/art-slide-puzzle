@@ -9,6 +9,8 @@ class Splitter extends Component {
     this.width = props.width;
   }
 
+  // split()
+
   render() {
     return (
       <div className="puzzle-board">
@@ -17,7 +19,8 @@ class Splitter extends Component {
             className="puzzle-image"
             src={this.image}
             alt="Puzzle"
-            width="900px"
+            width="982px"
+            height="779px"
           />
         </MediaQuery>
       </div>

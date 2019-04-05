@@ -6,6 +6,7 @@ import Puzzle, {
   generate2DArray,
   shuffle2DArray,
   compareMaps,
+  processMove,
   generatePieces
 } from "./Puzzle";
 
@@ -30,6 +31,7 @@ describe("Puzzle logic", () => {
 
     expect(shuffled).toHaveLength(4);
     expect(shuffled[3]).toHaveLength(5);
+
     // both sets match in numbers
     expect(xor(flatten(arr), flatten(shuffled))).toHaveLength(0);
   });
@@ -47,4 +49,24 @@ describe("Puzzle logic", () => {
     );
     expect(compare2).toBeFalsy();
   });
+
+  it("processes each move by taking in a map array and generating a new map array", () => {
+    const intArray = [[1, 2, 3], [4, 5, 6], [7, 9, 8]];
+    const newMap = processMove(intArray, 8, 9);
+
+    const expectedMap = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+    expect(compareMaps(newMap, expectedMap)).toBeTruthy();
+
+    const intArray2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+    const newMap2 = processMove(intArray2, 6, 9);
+
+    const expectedMap2 = [[1, 2, 3], [4, 5, 9], [7, 8, 6]];
+
+    expect(compareMaps(newMap2, expectedMap2)).toBeTruthy();
+  });
+
+  describe("Rendering", () => {
+    it("")
+  })
 });

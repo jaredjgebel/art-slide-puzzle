@@ -1,0 +1,34 @@
+{
+  "artworks": [
+    {
+      "title": "Olive Trees",
+      "artist": "Vincent Van Gogh",
+      "year": "1889",
+      "pieceHeight": "98px",
+      "pieceWidth": "97px",
+      "rowCount": "8",
+      "columnCount": "10",
+      "folder": "olive-trees"
+    },
+    {
+      "title": "Maine Coast",
+      "artist": "Winslow Homer",
+      "year": "1896",
+      "pieceHeight": "198px",
+      "pieceWidth": "186px",
+      "rowCount": "10",
+      "columnCount": "14",
+      "folder": "maine-coast"
+    },
+    {
+      "title": "The Mouth of a Cave",
+      "artist": "Hubert Robert",
+      "year": "1784",
+      "pieceHeight": "145px",
+      "pieceWidth": "137px",
+      "rowCount": "14",
+      "columnCount": "6",
+      "folder": "the-mouth-of-a-cave"
+    }
+  ]
+}
