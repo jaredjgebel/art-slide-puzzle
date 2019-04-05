@@ -23,7 +23,7 @@ export const generate2DArray = (numRows, numCols) => {
 export const shuffle2DArray = intArray => {
   const nestedLength = intArray[0].length;
   const flat = flatten(intArray);
-  const space = flat.slice(-1);
+  const [space] = flat.slice(-1);
   const withoutSpace = flat.slice(0, -1);
 
   const shuffled = [...shuffle(withoutSpace), space];

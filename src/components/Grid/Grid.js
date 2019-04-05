@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Row from "../Row/Row";
 import Space from "../Space/Space";
 
@@ -11,10 +12,13 @@ const Grid = ({ numRows, numCols, Pieces }) => {
   const FilledRows = Rows.map((space, rowIndex) => {
     const lastRow = rowIndex === Rows.length - 1;
     const children = lastRow
-      ? [...pieces.slice(index, index + numCols - 1), <Space index={index} />]
+      ? [
+          ...pieces.slice(index, index + numCols - 1),
+          <Space index={index} key={index + 1} />
+        ]
       : pieces.slice(index, index + numCols);
 
-    let row = <Row>{children}</Row>;
+    let row = <Row key={rowIndex}>{children}</Row>;
     index += numCols;
 
     return row;
@@ -24,3 +28,9 @@ const Grid = ({ numRows, numCols, Pieces }) => {
 };
 
 export default Grid;
+
+Grid.propTypes = {
+  numRows: PropTypes.number.isRequired,
+  numCols: PropTypes.number.isRequired,
+  Pieces: PropTypes.arrayOf(PropTypes.node).isRequired
+};

@@ -13,7 +13,6 @@ import {
 export const generatePieces = (int2dArray, images) => {
   const imageKeys = Object.keys(images);
   const ints = flatten(int2dArray);
-  console.log(int2dArray);
 
   return ints.map(int => (
     <Piece index={int} img={images[imageKeys[int - 1]]} key={int} />
