@@ -1,7 +1,7 @@
 import React from "react";
 
 const Row = props => (
-  <div className="row" style={{ height: "97px", display: "flex" }}>
+  <div className="row" style={{ height: "84px", display: "flex" }}>
     {props.children}
   </div>
 );
