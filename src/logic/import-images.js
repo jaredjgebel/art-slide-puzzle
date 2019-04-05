@@ -1,4 +1,4 @@
-// imports files from a given directory
+// imports all files from a given directory
 export default function importAll(r) {
   let images = {};
 
