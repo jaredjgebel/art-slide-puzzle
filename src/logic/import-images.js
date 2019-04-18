@@ -1,5 +1,5 @@
 // imports all files from a given directory
-export default function importAll(r) {
+export function importAll(r) {
   let images = {};
 
   r.keys().map((item, index) => {
@@ -8,3 +8,15 @@ export default function importAll(r) {
 
   return images;
 }
+
+export const importOliveTrees = () => {
+  return importAll(
+    require.context("../images/tiles/olive-trees", false, /\.(png|jpe?g|svg)$/)
+  );
+};
+
+export const importMaineCoast = () => {
+  return importAll(
+    require.context("../images/tiles/maine-coast", false, /\.(png|jpe?g|svg)$/)
+  );
+};

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Space = ({ index, width = "85px", height = "84px" }) => (
+const Space = ({ index, width, height }) => (
   <div
     className="piece"
     index={index}

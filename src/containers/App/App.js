@@ -1,27 +1,33 @@
 import React, { Component } from "react";
 import "./App.css";
-import Select from "../Select/Select";
-import Puzzle from "../Puzzle/Puzzle";
+import Select from "../../components/Select/Select";
+import Puzzle from "../../components/Puzzle/Puzzle";
+import PuzzleProvider from "../PuzzleProvider/PuzzleProvider";
+import { puzzles } from "../../data/puzzles.json";
 
 class App extends Component {
   constructor() {
     super();
+
     this.state = {
       game: "select", // or "loading" or "active"
-      puzzle: null // or title of puzzle
+      title: null, // or title of puzzle
+      puzzle: {} // puzzle object
     };
   }
 
   selectPuzzle = title => {
-    console.log(title);
+    const [puzzle] = puzzles.filter(puzzle => title === puzzle.folder);
+
     this.setState({
       game: "active",
-      puzzle: title
+      title,
+      puzzle
     });
   };
 
   render() {
-    const { game } = this.state;
+    const { game, title, puzzle } = this.state;
 
     if (game === "select") {
       return (
@@ -40,7 +46,9 @@ class App extends Component {
     if (game === "active") {
       return (
         <div className="puzzle">
-          <Puzzle />
+          <PuzzleProvider title={title} puzzle={puzzle}>
+            <Puzzle />
+          </PuzzleProvider>
         </div>
       );
     }

@@ -1,36 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Row from "../Row/Row";
-import Space from "../Space/Space";
+import { PuzzleContext } from "../../containers/PuzzleProvider/PuzzleProvider";
 
-const Grid = ({ numRows, numCols, Pieces }) => {
-  let index = 0;
-  let pieces = Array.from(Pieces);
+const Grid = ({ children }) => {
+  const filledRows = [];
+  let shuffledPieces = children;
 
-  const Rows = Array(numRows).fill(null);
+  return (
+    <PuzzleContext.Consumer>
+      {({ rows, columns, width, height }) => {
+        shuffledPieces.forEach((row, index) => {
+          filledRows.push(<Row key={index}>{[...row]}</Row>);
+        });
 
-  const FilledRows = Rows.map((space, rowIndex) => {
-    const lastRow = rowIndex === Rows.length - 1;
-    const children = lastRow
-      ? [
-          ...pieces.slice(index, index + numCols - 1),
-          <Space index={index} key={index + 1} />
-        ]
-      : pieces.slice(index, index + numCols);
-
-    let row = <Row key={rowIndex}>{children}</Row>;
-    index += numCols;
-
-    return row;
-  });
-
-  return <div className="grid">{FilledRows}</div>;
+        return filledRows;
+      }}
+    </PuzzleContext.Consumer>
+  );
 };
 
 export default Grid;
 
 Grid.propTypes = {
-  numRows: PropTypes.number.isRequired,
-  numCols: PropTypes.number.isRequired,
-  Pieces: PropTypes.arrayOf(PropTypes.node).isRequired
+  children: PropTypes.array.isRequired
 };

@@ -6,14 +6,17 @@ import flatten from "lodash.flatten";
 // generate2DArray(2, 3) => [[1, 2, 3], [4, 5, 6]]
 export const generate2DArray = (numRows, numCols) => {
   let i = 1;
-  const arr = new Array(numRows)
-    .fill(null)
-    .map(item => new Array(numCols).fill(null));
+  const arr = [];
 
   for (let j = 0; j < numRows; j++) {
+    let row = [];
     for (let k = 0; k < numCols; k++) {
-      arr[j][k] = i;
+      row.push(i);
       i++;
+
+      if (k === numCols - 1) {
+        arr.push(row);
+      }
     }
   }
 

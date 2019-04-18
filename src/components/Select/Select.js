@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import flatten from "lodash.flatten";
-import importAll from "../../logic/import-images";
+import { importAll } from "../../logic/import-images";
 
 const Select = ({ onSelect }) => {
   const images = importAll(
