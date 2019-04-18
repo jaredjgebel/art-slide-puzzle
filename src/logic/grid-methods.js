@@ -1,6 +1,9 @@
+import React from "react";
 import shuffle from "lodash.shuffle";
 import chunk from "lodash.chunk";
 import flatten from "lodash.flatten";
+import Piece from "../components/Piece/Piece";
+import Space from "../components/Space/Space";
 
 // fills a 2d array with an ascending counter
 // generate2DArray(2, 3) => [[1, 2, 3], [4, 5, 6]]
@@ -64,3 +67,32 @@ export const compareMaps = (solutionMap, pieceMap) => {
     return result === false;
   });
 };
+
+export const generatePieces = (int2dArray, images, width, height) => {
+  const imageKeys = Object.keys(images);
+  const ints = flatten(int2dArray);
+
+  const mappedPieces = [];
+
+  int2dArray.forEach(row => {
+    const mappedRow = row.map(int =>
+      int === ints.length ? (
+        <Space index={int} key={int} width={width} height={height} />
+      ) : (
+        <Piece
+          index={int}
+          img={images[imageKeys[int - 1]]}
+          key={int}
+          width={width}
+          height={height}
+        />
+      )
+    );
+
+    mappedPieces.push(mappedRow);
+  });
+
+  return mappedPieces;
+};
+
+// export const isValidMove

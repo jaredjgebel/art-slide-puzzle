@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Row from "../Row/Row";
+import Coordinates from "../Coordinates/Coordinates";
 import { PuzzleContext } from "../../containers/PuzzleProvider/PuzzleProvider";
 
 const Grid = ({ children }) => {
@@ -9,9 +10,22 @@ const Grid = ({ children }) => {
 
   return (
     <PuzzleContext.Consumer>
-      {({ rows, columns, width, height }) => {
-        shuffledPieces.forEach((row, index) => {
-          filledRows.push(<Row key={index}>{[...row]}</Row>);
+      {({ height }) => {
+        shuffledPieces.forEach((row, rowIndex) => {
+          const rowWithCoords = row.map((piece, colIndex) => {
+            return (
+              <Coordinates row={rowIndex} column={colIndex} key={colIndex}>
+                {piece}
+              </Coordinates>
+            );
+          });
+          console.log(rowWithCoords);
+
+          filledRows.push(
+            <Row key={rowIndex} height={height}>
+              {[...rowWithCoords]}
+            </Row>
+          );
         });
 
         return filledRows;

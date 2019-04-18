@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Row = props => (
-  <div className="row" style={{ height: "84px", display: "flex" }}>
+  <div className="row" style={{ height: props.height, display: "flex" }}>
     {props.children}
   </div>
 );
