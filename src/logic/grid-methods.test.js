@@ -1,11 +1,10 @@
 import flatten from "lodash.flatten";
 import xor from "lodash.xor";
-import {
-  generate2DArray,
-  shuffle2DArray,
-  compareMaps,
-  processMove
-} from "../logic/grid-methods";
+import isValidMove from "../../logic/isValidMove";
+import compareMaps from "../logic/compareMaps";
+import generate2DArray from "../logic/generate2DArray";
+import processNewMove from "../logic/processNewMove";
+import shuffle2DArray from "../logic/shuffle2DArray";
 
 describe("Puzzle logic", () => {
   it("generates a 2D Array given rows and columns, filled with an ascending counter variable", () => {
@@ -43,17 +42,25 @@ describe("Puzzle logic", () => {
 
   it("processes each move by taking in a map array and generating a new map array", () => {
     const intArray = [[1, 2, 3], [4, 5, 6], [7, 9, 8]];
-    const newMap = processMove(intArray, 8, 9);
+    const newMap = processNewMove(intArray, 8, 9);
 
     const expectedMap = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 
     expect(compareMaps(newMap, expectedMap)).toBeTruthy();
 
     const intArray2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-    const newMap2 = processMove(intArray2, 6, 9);
+    const newMap2 = processNewMove(intArray2, 6, 9);
 
     const expectedMap2 = [[1, 2, 3], [4, 5, 9], [7, 8, 6]];
 
     expect(compareMaps(newMap2, expectedMap2)).toBeTruthy();
+  });
+
+  it("tests whether or not a given move is valid", () => {
+    expect(isValidMove([0, 0], [0, 1])).toBeTruthy();
+    expect(isValidMove([0, 0], [1, 0])).toBeTruthy();
+    expect(isValidMove([0, 4], [1, 4])).toBeTruthy();
+    expect(isValidMove([3, 4], [2, 4])).toBeTruthy();
+    expect(isValidMove([4, 5], [2, 1])).toBeFalsy();
   });
 });
