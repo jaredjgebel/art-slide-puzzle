@@ -3,6 +3,7 @@ import flatten from "lodash.flatten";
 
 const processNewMove = (intArray, pieceInt, spaceInt) => {
   const nestedLength = intArray[0].length;
+
   const flat = flatten(intArray);
   const pieceIndex = flat.indexOf(pieceInt);
   const spaceIndex = flat.indexOf(spaceInt);

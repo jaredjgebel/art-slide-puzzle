@@ -9,10 +9,18 @@ const generatePieces = (int2dArray, images, width, height) => {
 
   const mappedPieces = [];
 
+  // width = String.toString(width);
+  // height = String.toString(height);
+
   int2dArray.forEach(row => {
     const mappedRow = row.map(int =>
       int === ints.length ? (
-        <Space index={int} key={int} width={width} height={height} />
+        <Space
+          index={int}
+          key={int}
+          width={width.toString()}
+          height={height.toString()}
+        />
       ) : (
         <Piece
           index={int}

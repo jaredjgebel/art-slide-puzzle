@@ -3,39 +3,44 @@ import PropTypes from "prop-types";
 import Row from "../Row/Row";
 import Coordinates from "../Coordinates/Coordinates";
 import { PuzzleContext } from "../../containers/PuzzleProvider/PuzzleProvider";
+import { GridContext } from "../../containers/GridProvider/GridProvider";
 
-const Grid = ({ children }) => {
-  const filledRows = [];
-  let shuffledPieces = children;
-
+const Grid = () => {
   return (
-    <PuzzleContext.Consumer>
-      {({ height }) => {
-        shuffledPieces.forEach((row, rowIndex) => {
-          const rowWithCoords = row.map((piece, colIndex) => {
-            return (
-              <Coordinates row={rowIndex} column={colIndex} key={colIndex}>
-                {piece}
-              </Coordinates>
-            );
-          });
-          console.log(rowWithCoords);
+    <GridContext.Consumer>
+      {({ Pieces }) => {
+        const filledRows = [];
 
-          filledRows.push(
-            <Row key={rowIndex} height={height}>
-              {[...rowWithCoords]}
-            </Row>
-          );
-        });
+        return (
+          <PuzzleContext.Consumer>
+            {({ height }) => {
+              Pieces.forEach((row, rowIndex) => {
+                const rowWithCoords = row.map((piece, colIndex) => {
+                  return (
+                    <Coordinates
+                      row={rowIndex}
+                      column={colIndex}
+                      key={colIndex}
+                    >
+                      {piece}
+                    </Coordinates>
+                  );
+                });
 
-        return filledRows;
+                filledRows.push(
+                  <Row key={rowIndex} height={height}>
+                    {[...rowWithCoords]}
+                  </Row>
+                );
+              });
+
+              return filledRows;
+            }}
+          </PuzzleContext.Consumer>
+        );
       }}
-    </PuzzleContext.Consumer>
+    </GridContext.Consumer>
   );
 };
 
 export default Grid;
-
-Grid.propTypes = {
-  children: PropTypes.array.isRequired
-};
