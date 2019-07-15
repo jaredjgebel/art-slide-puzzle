@@ -1,7 +1,7 @@
 {
   "name": "art-slide-puzzle",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "lodash.chunk": "^4.2.0",
     "lodash.flatten": "^4.4.0",
