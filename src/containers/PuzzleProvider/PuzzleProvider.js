@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import isValidMove from "../../logic/isValidMove";
-import { importOliveTrees, importMaineCoast } from "../../logic/import-images";
+import {
+  importOliveTrees,
+  importMaineCoast,
+  importWindflowers
+} from "../../logic/import-images";
 import generatePieces from "../../logic/generatePieces";
 import compareMaps from "../../logic/compareMaps";
 import processNewMove from "../../logic/processNewMove";
@@ -16,7 +20,9 @@ class PuzzleProvider extends Component {
     const images =
       props.puzzle.title === "Olive Trees"
         ? importOliveTrees()
-        : importMaineCoast();
+        : props.puzzle.title === "Maine Coast"
+        ? importMaineCoast()
+        : importWindflowers();
 
     const solutionMap = generate2DArray(
       props.puzzle.rowCount,

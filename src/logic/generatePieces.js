@@ -9,9 +9,6 @@ const generatePieces = (int2dArray, images, width, height) => {
 
   const mappedPieces = [];
 
-  // width = String.toString(width);
-  // height = String.toString(height);
-
   int2dArray.forEach(row => {
     const mappedRow = row.map(int =>
       int === ints.length ? (

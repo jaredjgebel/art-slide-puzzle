@@ -20,3 +20,9 @@ export const importMaineCoast = () => {
     require.context("../images/tiles/maine-coast", false, /\.(png|jpe?g|svg)$/)
   );
 };
+
+export const importWindflowers = () => {
+  return importAll(
+    require.context("../images/tiles/windflowers", false, /\.(png|jpe?g|svg)$/)
+  );
+};

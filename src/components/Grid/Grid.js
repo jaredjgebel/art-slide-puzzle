@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Row from "../Row/Row";
 import Coordinates from "../Coordinates/Coordinates";
 import { PuzzleContext } from "../../containers/PuzzleProvider/PuzzleProvider";

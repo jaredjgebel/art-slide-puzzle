@@ -48,9 +48,6 @@ class GridProvider extends Component {
   }
 
   processMove = (pieceMap, pieceCoords, pieceIndex) => {
-    console.log(
-      isValidMove(pieceCoords, this.state.spaceIndex, this.state.pieceMap)
-    );
     if (isValidMove(pieceCoords, this.state.spaceIndex, this.state.pieceMap)) {
       const newMap = processNewMove(
         pieceMap,
