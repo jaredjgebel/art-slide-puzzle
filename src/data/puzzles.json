@@ -4,20 +4,20 @@
       "title": "Olive Trees",
       "artist": "Vincent Van Gogh",
       "year": "1889",
-      "pieceHeight": "84px",
-      "pieceWidth": "85px",
-      "rowCount": "8",
-      "columnCount": "10",
+      "pieceHeight": "194px",
+      "pieceWidth": "194px",
+      "rowCount": "4",
+      "columnCount": "5",
       "folder": "olive-trees"
     },
     {
       "title": "Maine Coast",
       "artist": "Winslow Homer",
       "year": "1896",
-      "pieceHeight": "185.99px",
-      "pieceWidth": "197.99px",
-      "rowCount": "10",
-      "columnCount": "14",
+      "pieceHeight": "135px",
+      "pieceWidth": "134px",
+      "rowCount": "4",
+      "columnCount": "6",
       "folder": "maine-coast"
     },
     {

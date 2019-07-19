@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Grid from "../Grid/Grid";
 import { PuzzleContext } from "../../containers/PuzzleProvider/PuzzleProvider";
 import GridProvider from "../../containers/GridProvider/GridProvider";
+import "./Puzzle.css";
 
 class Puzzle extends Component {
   render() {

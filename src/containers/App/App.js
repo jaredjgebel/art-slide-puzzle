@@ -45,10 +45,12 @@ class App extends Component {
 
     if (game === "active") {
       return (
-        <div className="puzzle">
-          <PuzzleProvider title={title} puzzle={puzzle}>
-            <Puzzle />
-          </PuzzleProvider>
+        <div className="body">
+          <div className="puzzle">
+            <PuzzleProvider title={title} puzzle={puzzle}>
+              <Puzzle />
+            </PuzzleProvider>
+          </div>
         </div>
       );
     }
