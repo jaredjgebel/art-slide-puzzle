@@ -73,13 +73,34 @@ class GridProvider extends Component {
     }
   };
 
+  shuffle2DArray = pieceMap => {
+    const newMap = shuffle2DArray(pieceMap);
+
+    const spaceCoords = getSpaceCoords(newMap, this.state.spaceIndex);
+
+    const newPieces = generatePieces(
+      newMap,
+      this.props.images,
+      this.props.width,
+      this.props.height
+    );
+
+    this.setState({
+      ...this.state,
+      pieceMap: newMap,
+      Pieces: newPieces,
+      spaceCoordinates: spaceCoords
+    });
+  };
+
   render() {
-    const { processMove } = this;
+    const { processMove, shuffle2DArray } = this;
     return (
       <GridContext.Provider
         value={{
           ...this.state,
-          processMove
+          processMove,
+          shuffle2DArray
         }}
       >
         {this.props.children}

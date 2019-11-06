@@ -1,0 +1,50 @@
+.menubar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: stretch;
+  margin-bottom: 25px;
+}
+
+.menubar {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  align-content: stretch;
+  background: lightsteelblue;
+  padding: 10px 0px;
+  border-radius: 25px;
+  box-shadow: 1px 1px steelblue;
+}
+
+.back {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.info {
+  flex: 5 1 auto;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.refresh {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+svg {
+   height: 50px;
+}
+
+svg:hover {
+   fill: beige;
+   transition: 0.2s;
+}

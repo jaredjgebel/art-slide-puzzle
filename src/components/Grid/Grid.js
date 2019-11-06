@@ -3,6 +3,7 @@ import Row from "../Row/Row";
 import Coordinates from "../Coordinates/Coordinates";
 import { PuzzleContext } from "../../containers/PuzzleProvider/PuzzleProvider";
 import { GridContext } from "../../containers/GridProvider/GridProvider";
+import "./Grid.css";
 
 const Grid = () => {
   return (
@@ -33,7 +34,7 @@ const Grid = () => {
                 );
               });
 
-              return filledRows;
+              return <div className="grid">{filledRows}</div>;
             }}
           </PuzzleContext.Consumer>
         );

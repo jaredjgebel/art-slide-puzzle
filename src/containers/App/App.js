@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Select from "../../components/Select/Select";
-import Puzzle from "../../components/Puzzle/Puzzle";
-import PuzzleProvider from "../PuzzleProvider/PuzzleProvider";
+import PuzzleContainer from "../PuzzleContainer/PuzzleContainer";
 import { puzzles } from "../../data/puzzles.json";
 
 class App extends Component {
@@ -12,7 +11,7 @@ class App extends Component {
     this.state = {
       game: "select", // or "loading" or "active"
       title: null, // or title of puzzle
-      puzzle: {} // puzzle object
+      puzzle: {}
     };
   }
 
@@ -26,17 +25,19 @@ class App extends Component {
     });
   };
 
+  backToSelect = () => {
+    this.setState({
+      game: "select",
+      title: null,
+      puzzle: {}
+    });
+  };
+
   render() {
-    const { game, title, puzzle } = this.state;
+    const { game, puzzle } = this.state;
 
     if (game === "select") {
-      return (
-        <div className="select" style={{ textAlign: "center" }}>
-          <h1>Artwork Slide Puzzles</h1>
-          <h2>Select your puzzle</h2>
-          <Select onSelect={this.selectPuzzle} />
-        </div>
-      );
+      return <Select onSelect={this.selectPuzzle} />;
     }
 
     if (game === "loading") {
@@ -45,13 +46,7 @@ class App extends Component {
 
     if (game === "active") {
       return (
-        <div className="body">
-          <div className="puzzle">
-            <PuzzleProvider title={title} puzzle={puzzle}>
-              <Puzzle />
-            </PuzzleProvider>
-          </div>
-        </div>
+        <PuzzleContainer puzzle={puzzle} backToSelect={this.backToSelect} />
       );
     }
 

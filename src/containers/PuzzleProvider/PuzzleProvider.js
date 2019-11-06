@@ -1,14 +1,9 @@
 import React, { Component } from "react";
-import isValidMove from "../../logic/isValidMove";
 import {
   importOliveTrees,
   importMaineCoast,
   importWindflowers
 } from "../../logic/import-images";
-import generatePieces from "../../logic/generatePieces";
-import compareMaps from "../../logic/compareMaps";
-import processNewMove from "../../logic/processNewMove";
-import shuffle2DArray from "../../logic/shuffle2DArray";
 import generate2DArray from "../../logic/generate2DArray";
 
 export const PuzzleContext = React.createContext();

@@ -12,22 +12,40 @@ const Select = ({ onSelect }) => {
 
   return (
     <div
-      className="select"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
+      style={{ textAlign: "center", backgroundColor: "beige", height: "100vh" }}
     >
-      {Object.keys(images).map((key, index) => (
-        <img
-          src={images[key]}
-          key={index}
-          data-title={titles[index]}
-          style={{ maxWidth: "300px", maxHeight: "500px", margin: "25px 25px" }}
-          onClick={() => onSelect(titles[index])}
-        />
-      ))}
+      <h1
+        style={{
+          marginTop: "0px",
+          paddingTop: "25px"
+        }}
+      >
+        Art Slide Puzzles
+      </h1>
+      <h2>Select your puzzle</h2>
+
+      <div
+        className="select"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexWrap: "wrap"
+        }}
+      >
+        {Object.keys(images).map((key, index) => (
+          <img
+            src={images[key]}
+            key={index}
+            data-title={titles[index]}
+            style={{
+              maxHeight: "250px",
+              margin: "25px 25px"
+            }}
+            onClick={() => onSelect(titles[index])}
+          />
+        ))}
+      </div>
     </div>
   );
 };
