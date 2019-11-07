@@ -11,9 +11,7 @@ const Select = ({ onSelect }) => {
   const titles = flatten(Object.keys(images).map(key => /[^.]*/.exec(key)));
 
   return (
-    <div
-      style={{ textAlign: "center", backgroundColor: "beige", height: "100vh" }}
-    >
+    <div style={{ textAlign: "center", backgroundColor: "beige", height: "" }}>
       <h1
         style={{
           marginTop: "0px",

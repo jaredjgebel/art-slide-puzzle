@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import isValidMove from "../../logic/isValidMove";
-import compareMaps from "../../logic/compareMaps";
 import processNewMove from "../../logic/processNewMove";
 import generate2DArray from "../../logic/generate2DArray";
 import shuffle2DArray from "../../logic/shuffle2DArray";

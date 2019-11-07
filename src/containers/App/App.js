@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
 import Select from "../../components/Select/Select";
-import PuzzleContainer from "../PuzzleContainer/PuzzleContainer";
+import PuzzleProvider, {
+  PuzzleContext
+} from "../PuzzleProvider/PuzzleProvider";
+import GridProvider from "../GridProvider/GridProvider";
+import Grid from "../../components/Grid/Grid";
+import MenuBar from "../../components/MenuBar/MenuBar";
 import { puzzles } from "../../data/puzzles.json";
+import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -46,7 +52,29 @@ class App extends Component {
 
     if (game === "active") {
       return (
-        <PuzzleContainer puzzle={puzzle} backToSelect={this.backToSelect} />
+        <PuzzleProvider title={puzzle.title} puzzle={puzzle}>
+          <PuzzleContext.Consumer>
+            {({ rows, columns, height, width, images }) => (
+              <GridProvider
+                rows={rows}
+                columns={columns}
+                height={height}
+                width={width}
+                images={images}
+              >
+                <div className="body">
+                  <Grid />
+                  <MenuBar
+                    artist={puzzle.artist}
+                    title={puzzle.title}
+                    year={puzzle.year}
+                    backToSelect={this.backToSelect}
+                  />
+                </div>
+              </GridProvider>
+            )}
+          </PuzzleContext.Consumer>
+        </PuzzleProvider>
       );
     }
 
