@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import flatten from "lodash.flatten";
 import { importAll } from "../../logic/import-images";
+import "./Select.css";
 
 const Select = ({ onSelect }) => {
   const images = importAll(
@@ -11,7 +12,7 @@ const Select = ({ onSelect }) => {
   const titles = flatten(Object.keys(images).map(key => /[^.]*/.exec(key)));
 
   return (
-    <div style={{ textAlign: "center", backgroundColor: "beige", height: "" }}>
+    <div className="select">
       <h1
         style={{
           marginTop: "0px",
@@ -22,15 +23,7 @@ const Select = ({ onSelect }) => {
       </h1>
       <h2>Select your puzzle</h2>
 
-      <div
-        className="select"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexWrap: "wrap"
-        }}
-      >
+      <div className="artwork-options">
         {Object.keys(images).map((key, index) => (
           <img
             src={images[key]}

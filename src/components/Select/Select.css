@@ -1,0 +1,12 @@
+.select {
+  height: 100vh;
+  background-color: beige;
+  text-align: center;
+}
+
+.artwork-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
