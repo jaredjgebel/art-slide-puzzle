@@ -19,11 +19,6 @@ class PuzzleProvider extends Component {
         ? importMaineCoast()
         : importWindflowers();
 
-    const solutionMap = generate2DArray(
-      props.puzzle.rowCount,
-      props.puzzle.columnCount
-    );
-
     this.state = props.puzzle
       ? {
           title: props.puzzle.title,
@@ -33,7 +28,6 @@ class PuzzleProvider extends Component {
           width: parseInt(props.puzzle.pieceWidth),
           rows: parseInt(props.puzzle.rowCount),
           columns: parseInt(props.puzzle.columnCount),
-          solutionMap,
           images
         }
       : {};

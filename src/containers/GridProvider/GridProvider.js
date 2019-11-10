@@ -40,9 +40,10 @@ class GridProvider extends Component {
     this.state = {
       spaceIndex: parseInt(props.rows) * parseInt(props.columns),
       spaceCoordinates: [props.rows - 1, props.columns - 1],
-      solutionMap: props.solutionMap,
+      solutionMap: solutionMap,
       pieceMap: pieceMap,
-      Pieces
+      Pieces,
+      setPuzzleComplete: props.setPuzzleComplete
     };
   }
 

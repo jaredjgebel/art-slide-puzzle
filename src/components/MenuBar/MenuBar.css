@@ -7,7 +7,7 @@
 }
 
 .menubar {
-  width: 80vw;
+  width: 75vw;
   display: flex;
   justify-content: center;
   align-content: stretch;
@@ -41,10 +41,10 @@
 }
 
 svg {
-   height: 50px;
+  height: 50px;
 }
 
 svg:hover {
-   fill: beige;
-   transition: 0.2s;
+  fill: beige;
+  transition: 0.2s;
 }

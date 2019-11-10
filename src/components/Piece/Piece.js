@@ -2,13 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { PuzzleContext } from "../../containers/PuzzleProvider/PuzzleProvider";
 import { GridContext } from "../../containers/GridProvider/GridProvider";
+import compareMaps from "../../logic/compareMaps";
 
 const Piece = ({ index, img, coords }) => (
   <PuzzleContext.Consumer>
     {({ width, height }) => {
       return (
         <GridContext.Consumer>
-          {({ processMove, pieceMap }) => {
+          {({ processMove, pieceMap, solutionMap, setPuzzleComplete }) => {
             return (
               <div
                 className="piece"
@@ -16,6 +17,9 @@ const Piece = ({ index, img, coords }) => (
                 index={index}
                 onClick={() => {
                   processMove(pieceMap, coords, index);
+                  if (compareMaps(solutionMap, pieceMap)) {
+                    setPuzzleComplete(true);
+                  }
                 }}
               >
                 <img src={img} />

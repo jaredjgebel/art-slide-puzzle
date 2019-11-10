@@ -17,7 +17,8 @@ class App extends Component {
     this.state = {
       game: "select", // or "loading" or "active"
       title: null, // or title of puzzle
-      puzzle: {}
+      puzzle: {},
+      complete: false
     };
   }
 
@@ -25,6 +26,7 @@ class App extends Component {
     const [puzzle] = puzzles.filter(puzzle => title === puzzle.folder);
 
     this.setState({
+      ...this.state,
       game: "active",
       title,
       puzzle
@@ -33,14 +35,23 @@ class App extends Component {
 
   backToSelect = () => {
     this.setState({
+      ...this.state,
       game: "select",
       title: null,
-      puzzle: {}
+      puzzle: {},
+      complete: false
+    });
+  };
+
+  setPuzzleComplete = bool => {
+    this.setState({
+      ...this.state,
+      complete: bool
     });
   };
 
   render() {
-    const { game, puzzle } = this.state;
+    const { game, puzzle, complete } = this.state;
 
     if (game === "select") {
       return <Select onSelect={this.selectPuzzle} />;
@@ -61,9 +72,16 @@ class App extends Component {
                 height={height}
                 width={width}
                 images={images}
+                setPuzzleComplete={this.setPuzzleComplete}
               >
                 <div className="body">
                   <Grid />
+                  {complete ? (
+                    <p className="puzzle-complete">
+                      You completed the puzzle! I laud you for your patience and
+                      wit.
+                    </p>
+                  ) : null}
                   <MenuBar
                     artist={puzzle.artist}
                     title={puzzle.title}
